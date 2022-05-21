@@ -25,10 +25,17 @@ generateBtn.addEventListener("click", writePassword);
 
 // Write password to the #password input
 function writePassword() {
+  var promptCriteriaMet = promptsForPassword();
+
+if(promptCriteriaMet) {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+
+}
+
+
 
 }
 
@@ -40,17 +47,33 @@ function generatePassword() {
       // User prompted to confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
   // Input should be validated and at least one character type should be selected, pw should be between 8-128 characters
   // Generate the password based on the criteria
-  
-  
-  
-  
-  
   // Display password in box
     return "password";
   }
 
-  function promptsForPassword () {
-    passwordLength = parseInt(prompt ("Choose password length between 8 and 128 characters"));
-    if passwordLength < 8 || passwordLength >128
+  function promptsForPassword (){
+    choiceArray = [];
+    passwordLength = parseInt(prompt("Choose password length between 8 and 128 characters"));
 
+    if  (passwordLength < 8 || passwordLength > 128) {
+      alert("Password length must be a number between 8 - 128 digits.");
+      return false;
+    }
+     
+    if (confirm("Do you want your password to have $pe<i@l <h@r@a<+er$?")) {
+      choiceArray = choiceArray.concat(specialCharacters);
+     }
+
+     if (confirm("Do you want your password to have numbers?")) {
+      choiceArray = choiceArray.concat(numberArray);
+     }
+
+    if (confirm("Do you want your password to have UPPERCASE letters?")) {
+      choiceArray = choiceArray.concat(upperCaseArray);
+     }
+    
+    if (confirm("Do you want your password to have lowercase letters?")) {
+      choiceArray = choiceArray.concat(lowerCaseArray);
+     }
+     return true;
   }
