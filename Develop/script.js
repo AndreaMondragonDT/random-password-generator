@@ -5,18 +5,8 @@ var upperCaseArray = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S'
 var lowerCaseArray = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm' ];
 var passwordLength = 8;
 
-
-
-// Assignment code here
-
-
-
-
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
-
-
-
 
 
 // Add event listener to generate button
@@ -28,27 +18,27 @@ function writePassword() {
   var promptCriteriaMet = promptsForPassword();
 
 if(promptCriteriaMet) {
-  var password = generatePassword();
+  var newPassword = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  passwordText.value = newPassword;
 
+} else {
+  passwordTest.value = "";
 }
 
 
-
 }
 
-function generatePassword() {
   // Prompt user for password criteria when button is clicked
+function generatePassword() {
+var password = " ";
+for (var i = 0; i < passwordLength; i++){
+  var randomLetter = Math.floor(Math.random() * choiceArray.length);
+  password = password + choiceArray[randomLetter];
+}
   
-
-      // Prompt to choose password between 8-128 characters
-      // User prompted to confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-  // Input should be validated and at least one character type should be selected, pw should be between 8-128 characters
-  // Generate the password based on the criteria
-  // Display password in box
-    return "password";
+    return password;
   }
 
   function promptsForPassword (){
